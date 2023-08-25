@@ -9,8 +9,12 @@ import subprocess
 
 class test_Psycopg(dbapi20.DatabaseAPI20Test):
     driver = psycopg2
-    connect_args = ()
-    connect_kw_args = {'dsn': 'dbname=dbapi20_test'}
+    connect_kw_args = {
+        'host': 'localhost',
+        'user': 'root',
+        'dbname': 'dbt',
+        'password': 'password'
+        }
 
     lower_func = 'lower' # For stored procedure test
 
