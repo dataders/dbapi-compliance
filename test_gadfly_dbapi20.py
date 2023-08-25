@@ -53,14 +53,14 @@ class test_GadflyDBAPI20(dbapi20.DatabaseAPI20Test):
     def test_ISO8601(self):
         self.failUnlessEqual(str(gadfly.Date(1234,12,21)), '1234-12-21')
         self.failUnlessEqual(str(gadfly.Date(34,2,4)), '0034-02-04')
-        self.failUnlessEqual(str(gadfly.Time(00,01,02)), '00:01:02')
-        self.failUnlessEqual(str(gadfly.Time(24,01,02)), '24:01:02')
+        self.failUnlessEqual(str(gadfly.Time(0,1,2)), '00:01:02')
+        self.failUnlessEqual(str(gadfly.Time(24,1,2)), '24:01:02')
         self.failUnlessEqual(
-                str(gadfly.Timestamp(1234,12,21,00,01,02)),
+                str(gadfly.Timestamp(1234,12,21,0,1,2)),
                 '1234-12-21 00:01:02'
                 )
         self.failUnlessEqual(
-            str(gadfly.Timestamp(34,2,4,24,01,02)),
+            str(gadfly.Timestamp(34,2,4,24,1,2)),
             '0034-02-04 24:01:02'
             )
 
