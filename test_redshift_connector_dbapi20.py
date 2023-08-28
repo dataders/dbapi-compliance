@@ -2,23 +2,16 @@
 
 # Test suite driver for psycopg2. This is not official - more an example.
 
+import os
 import dbapi20
-import pg8000.dbapi
-import subprocess
-from test_psycopg_dbapi20 import TestPsycopg
+import redshift_connector
 
-class TestPg8000(TestPsycopg):
+class TestRedshiftConnector(dbapi20.DatabaseAPI20Test):
     # driver = psycopg2
-    driver = pg8000.dbapi
+    driver = redshift_connector
     connect_kw_args = {
-        'host': 'localhost',
-        'user': 'root',
-        'database': 'dbt',
-        'password': 'password'
+        'host': os.environ.get('REDSHIFT_TEST_HOST'),
+        'user':  os.environ.get('REDSHIFT_TEST_USER'),
+        'database':  os.environ.get('REDSHIFT_TEST_DBNAME'),
+        'password':  os.environ.get('REDSHIFT_TEST_PASS'),
         }
-
-    lower_func = 'lower' # For stored procedure test
-
-    def test_non_idempotent_close(self): pass
-    def test_nextset(self): pass
-    def test_setoutputsize(self): pass
