@@ -3,3 +3,4 @@
 *.class
 /dbapi20.egg-info/
 /dist/
+test.env
